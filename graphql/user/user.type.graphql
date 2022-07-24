@@ -1,0 +1,46 @@
+# Types
+type User {
+  id: Int
+  name: String
+  userName: String
+  email: String
+  password: String
+  avatar: String
+}
+
+type LoginOutput {
+  user: User
+  token: String
+}
+
+type Profile {
+  id: Int
+  name: String
+  userName: String
+  email: String
+  password: String
+  avatar: String
+  experiments: [Experiment]
+}
+
+# Inputs
+input UserInput {
+  name: String!
+  userName: String!
+  email: String!
+  password: String!
+}
+
+# Operations
+type Query {
+  listUsers: [User]
+  findUser(id: Int!): User
+  profile: Profile
+}
+
+type Mutation {
+  login(email: String!, password: String!): LoginOutput
+  register(user: UserInput): User
+  updateUser(id: Int!, user: UserInput): User
+  removeUser(id: Int!): Boolean
+}

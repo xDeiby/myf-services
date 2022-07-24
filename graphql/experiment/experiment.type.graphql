@@ -1,0 +1,29 @@
+# Types
+
+type Experiment {
+  id: Int
+  title: String
+  description: String
+  code: String
+  status: String
+  image: String
+}
+
+# Inputs
+input ExperimentInput {
+  title: String!
+  description: String!
+  status: String
+}
+
+# Operations
+type Query {
+  listExperiments: [Experiment]
+  findExperiment(id: Int!): Experiment
+}
+
+type Mutation {
+  createExperiment(experiment: ExperimentInput): Experiment
+  updateExperiment(id: Int!, data: ExperimentInput): Experiment
+  removeExperiment(id: Int!): Boolean
+}
